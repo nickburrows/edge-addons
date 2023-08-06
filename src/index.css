@@ -1,3 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+/*
+::-webkit-scrollbar-button 滾動條有上下箭頭的按鈕 (箭頭可一次滾動一行)
+::-webkit-scrollbar:horizontal{}  水平滾動條
+::-webkit-scrollbar:vertical{}  垂直滾動條
+::-webkit-scrollbar-track-piece  滾動條可拖動把手的軌道
+*/
+/* 滾動條的軌跡條 --- 進度條 */
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-background);
+  border-radius: 5px;
+}
+/* 滾動條水平和垂直相交處 --- 右下角 */
+*::-webkit-scrollbar-corner {
+  background: var(--scrollbar-corner);
+  border-radius: 5px;
+}
+/* 可拖動的把手 */
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: 14px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +42,90 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+body {
+  width: "500px";
+}
+
+@layer base {
+  :root {
+    --scrollbar-color: #606060;
+    --scrollbar-corner: ##272727;
+    --scrollbar-background: #272727;
+    --scrollbar-hover: #888888;
+  }
+}
+
+@layer components {
+  .tablePreview {
+    @apply relative overflow-x-auto;
+  }
+  .tablePreview > table {
+    @apply w-full text-sm text-left text-gray-500 dark:text-gray-400;
+  }
+  .tablePreview > table > thead {
+    @apply text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400;
+  }
+  .tablePreview > table > thead > tr > th {
+    @apply px-6 py-3;
+  }
+  .tablePreview > table > tbody > tr {
+    @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600;
+  }
+  .tablePreview > table > tbody > tr > td:not(:first-child) {
+    @apply px-6 py-4;
+  }
+  .tablePreview > table > tbody > tr > td:first-child {
+    @apply px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white;
+  }
+  .inputTextarea {
+    @apply text-sm w-full bg-slate-700 dark:bg-slate-700 text-white font-mono focus:outline-none;
+  }
+  .errorTextarea {
+    @apply bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500;
+  }
+  .btn-xs {
+    @apply px-3 py-2 text-xs font-medium text-center;
+  }
+  .btn-xs.btn-dark {
+    @apply text-gray-900 hover:text-white rounded-lg border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800;
+  }
+}
+
+.code-highlight {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+.code-highlight pre[class*="language-"] {
+  -webkit-overflow-scrolling: touch;
+}
+.code-highlight pre[class*="language-"]::before {
+  background: black;
+  border-radius: 0 0 0.25rem 0.25rem;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.025rem;
+  padding: 0.1rem 0.5rem;
+  position: absolute;
+  right: 1rem;
+  text-align: right;
+  text-transform: uppercase;
+  top: 0;
+}
+.code-highlight pre[class="language-js"]::before {
+  content: "js";
+  background: #f7df1e;
+  color: black;
+}
+.code-highlight-code-line {
+  background-color: #feb;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
+}
+pre[class*="prism-code language-"] {
+  margin: 0;
 }

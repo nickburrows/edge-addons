@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# 建立Edge擴充功能
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+使用React建構一個可適用於Edge瀏覽器的擴充功能，擴充功能主要作用為將試算表表格透過複製貼上轉為以下格式: `JSON`, `HTML`, `Markdown`，點擊相應的按鈕即可複製轉換後代碼。
 
-## Available Scripts
+其實只是因為我蠻頻繁會用到，每次想要轉成其他格式又是一頓操作勞心費力，但也沒有找到有類似或相關的功能可以使用的外掛，於是只好自己亂弄一個勉強堪用，至少夠我自己用，但是代碼內容也是亂七八糟，本想說整理一下要不乾脆上傳到商店去，可是又覺得太丟臉了，所以就放在自己這，以後也好查找。
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+下載此專案，解壓縮後導航到該專案文件夾中，並用 `yarn install` 進行依賴項安裝。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+  cd edge-addons
+  yarn install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+然後執行 `yarn start` 則可以在網頁上查看此擴充功能的畫面。
 
-### `npm test`
+在完成依賴項的安裝後，執行 `yarn build`，而後會在根目錄下發現有2個新增的文件夾: `dist`與`build`，打開 **Edge瀏覽器** 導航到擴充功能管理畫面，或是網址列輸入 `edge://extensions/`，將 **開發人員模式** 的選項開關設定為開啟，具體說明可以參考[微軟的網頁](https://learn.microsoft.com/zh-tw/microsoft-edge/extensions-chromium/getting-started/extension-sideloading)，將 `dist`文件夾中的 `manifest.json` 檔案拖到擴充功能管理的視窗畫面中，然後就會看到 **從其他來源** 分類中的擴充功能多了一個 `Table Data Converte`。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+先複製一個要轉換格式的試算表表格，複製後正常情況下已經會在系統的剪貼簿內，總之就是複製貼上
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. 複製表格
+2. 點擊瀏覽器上剛剛安裝的擴充功能會跳出彈窗
+3. 在文字輸入區塊按 `貼上`
+4. 點擊對應的按鈕複製轉換後的代碼
